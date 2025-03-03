@@ -131,7 +131,28 @@ namespace Anteckningar
                 textChanged = false;
             }
 
+            nbrOfWords();
+
             setFormText();
+        }
+
+        void nbrOfWords()
+        {
+            string[] words = textBox1.Text.Split(new char[] 
+            { ' ', '\t', '\n', '\r' }, 
+            StringSplitOptions.RemoveEmptyEntries);
+
+            int wordCount = words.Length;
+            int rowCount = textBox1.Lines.Length;
+            //int charSpaces = textBox1.Text.Replace("\r\n", "\n").Length; //Med radbrytningar
+            int charSpacesCount = textBox1.Text.Replace("\r\n", "").Length; //Utan radbrytningar
+            int charCount = textBox1.Text.Replace("\r\n", "").Replace(" ", "").Length;
+
+            statusMellanslag.Text = $"Tecken(mellanslag): {charSpacesCount.ToString()}";
+            statusTecken.Text = $"Tecken: {charCount.ToString()}";
+            statusOrd.Text = $"Ord: {wordCount.ToString()}";
+            statusRader.Text = $"Rader: {rowCount.ToString()}";
+
         }
 
         void setFormText()
