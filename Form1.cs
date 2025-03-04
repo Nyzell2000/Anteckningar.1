@@ -223,6 +223,10 @@ namespace Anteckningar
                 if (result == DialogResult.Yes)
                 {
                     sparaToolStripMenuItem.PerformClick();
+                    if (!saveSuccess) //Avbryter att stänga ned programmet om det inte sparades
+                    {
+                        e.Cancel = true;
+                    }
                 }
                 else if (result == DialogResult.Cancel) //Avbryter formClosing eventet om man klickar avbryt
                 {
